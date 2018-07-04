@@ -19,42 +19,60 @@
           :suggestionID="suggestionID"
         />
       </v-list>
+        <add-comment height="20%"/>
     </v-bottom-sheet>
   </div>
 </template>
 
 <script>
-import db from './../database/fbinit';
+import db from "./../database/fbinit";
+import addComment from "./../components/AddCommentsBox";
 
 export default {
   data() {
     return {
-      commentData: {},
+      commentData: {}
     };
   },
   methods: {
     handleClick() {
-      db.collection('suggestions').doc(this.suggestionID.id).collection('comments')
-        .onSnapshot((querySnapshot) => {
-          querySnapshot.docChanges().forEach((commentDatas) => {
-            if (commentDatas.type === 'added') {
-              console.log('added ===========');
-              this.$set(this.commentData, commentDatas.doc.id, commentDatas.doc.data());
-              localStorage.setItem(commentDatas.doc.id, commentDatas.doc.data());
+      db
+        .collection("suggestions")
+        .doc(this.suggestionID.id)
+        .collection("comments")
+        .onSnapshot(querySnapshot => {
+          querySnapshot.docChanges().forEach(commentDatas => {
+            if (commentDatas.type === "added") {
+              console.log("added ===========");
+              this.$set(
+                this.commentData,
+                commentDatas.doc.id,
+                commentDatas.doc.data()
+              );
+              localStorage.setItem(
+                commentDatas.doc.id,
+                commentDatas.doc.data()
+              );
             }
-            if (commentDatas.type === 'modified') {
-              this.$set(this.commentData, commentDatas.doc.id, commentDatas.doc.data());
+            if (commentDatas.type === "modified") {
+              this.$set(
+                this.commentData,
+                commentDatas.doc.id,
+                commentDatas.doc.data()
+              );
             }
-            if (commentDatas.type === 'removed') {
-              this.$delete(this.commentData, commentDatas.doc.id, commentDatas.doc.data());
+            if (commentDatas.type === "removed") {
+              this.$delete(
+                this.commentData,
+                commentDatas.doc.id,
+                commentDatas.doc.data()
+              );
             }
           });
         });
-    },
+    }
   },
-  props: ['suggestionID'],
-  components: {
-  },
+  props: ["suggestionID"],
+  components: { addComment }
 };
-
 </script>
