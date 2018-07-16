@@ -36,7 +36,6 @@
 
 <script>
 import db from "./../database/fbinit";
-import addComment from "./../components/AddCommentsBox";
 
 export default {
   data() {
@@ -90,6 +89,5 @@ export default {
     },
   },
   props: ["suggestionID"],
-  components: { addComment }
 };
 </script>
