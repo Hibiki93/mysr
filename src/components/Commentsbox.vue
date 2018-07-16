@@ -19,8 +19,18 @@
           :suggestionID="suggestionID"
         />
       </v-list>
-        <add-comment height="20%"/>
-    </v-bottom-sheet>
+      <v-card>
+  <v-textarea
+    outline
+    name="inputCommentBox"
+    label="Add Your Comment Here..."
+    auto-grow
+    value=""
+    v-model= "inputComment"
+    v-on:keyup.enter = "enterComment"
+    />
+</v-card>
+</v-bottom-sheet>
   </div>
 </template>
 
@@ -31,7 +41,8 @@ import addComment from "./../components/AddCommentsBox";
 export default {
   data() {
     return {
-      commentData: {}
+      commentData: {},
+      inputComment: ''
     };
   },
   methods: {
@@ -70,7 +81,13 @@ export default {
             }
           });
         });
-    }
+    },
+    enterComment() {
+      db.collection("suggestions").doc(this.suggestionID.id).collection("comments").add({
+        comment: this.inputComment
+      });
+      this.inputComment = '';
+    },
   },
   props: ["suggestionID"],
   components: { addComment }
