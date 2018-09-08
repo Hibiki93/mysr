@@ -4,31 +4,36 @@
       <v-btn slot="activator" color="purple" dark  @click="handleClick"
       >Comments</v-btn>
       <v-list>
-        <v-subheader>Comment {{suggestionID.id}}</v-subheader>
-        <ul>
-            <li
-            v-for="(comment , index) in commentData"
-            v-bind:key="index"
-            v-bind:author="comment.author"
-            v-bind:comment="comment.comment"
-            > 
-            {{comment.author}} : {{comment.comment}}
-            </li>
-        </ul>
+        <v-container>
+          <v-subheader>Comment {{suggestionID.id}}</v-subheader>
+          <ul>
+              <li
+              v-for="(comment , index) in commentData"
+              v-bind:key="index"
+              v-bind:author="comment.author"
+              v-bind:comment="comment.comment"
+              > 
+              {{comment.author}} : {{comment.comment}}
+              </li>
+          </ul>
+        </v-container>
         <comment 
           :suggestionID="suggestionID"
         />
       </v-list>
       <v-card>
-  <v-textarea
-    outline
-    name="inputCommentBox"
-    label="Add Your Comment Here..."
-    auto-grow
-    value=""
-    v-model= "inputComment"
-    v-on:keyup.enter = "enterComment"
-    />
+        <v-container>
+
+          <v-textarea
+            outline
+            name="inputCommentBox"
+            label="Add Your Comment Here..."
+            auto-grow
+            value=""
+            v-model= "inputComment"
+            v-on:keyup.enter = "enterComment"
+            />
+        </v-container>
 </v-card>
 </v-bottom-sheet>
   </div>

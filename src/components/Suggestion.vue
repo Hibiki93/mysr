@@ -1,13 +1,12 @@
 <template>
   <v-layout row wrap>
-    <v-flex>
+    <v-flex xs12>
       <v-card>
         <v-card-media
-          src="https://s3.amazonaws.com/vuetify-docs/images/cards/sunshine.jpg"
-          height="300px"
+          src="../../static/img/icons/apple-touch-icon-180x180.png"
+          height="200px"
         >
         </v-card-media>
-
         <v-card-title primary-title-center>
           <div>
             <div class="headline">{{title}}</div>

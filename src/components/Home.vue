@@ -1,17 +1,21 @@
 <template>
-    <div>
+    <v-container>
         <h1>Suggestion Here!</h1>
-        <suggestionBox 
-        v-for="(suggestion, index) in suggestions"
-        v-bind:key="index"
-        v-bind:reason="suggestion.reason"
-        v-bind:description="suggestion.description"
-        v-bind:title="suggestion.title">
-        <comments-box
-        :suggestionID="suggestion"
-        />
-        </suggestionBox>
-    </div>
+        <v-container>
+            <v-layout align-start justify-start row>
+                    <suggestionBox 
+                    v-for="(suggestion, index) in suggestions"
+                    v-bind:key="index"
+                    v-bind:reason="suggestion.reason"
+                    v-bind:description="suggestion.description"
+                    v-bind:title="suggestion.title">
+                    <comments-box
+                    :suggestionID="suggestion"
+                    />
+                    </suggestionBox>
+            </v-layout>
+        </v-container>
+    </v-container>
 </template>
 
 <script>

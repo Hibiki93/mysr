@@ -1,4 +1,6 @@
 <template>
+<div class="container">
+<div class="col-6 offset-1">
   <v-form ref="form" v-model="valid" lazy-validation>
     <v-text-field
       v-model="email"
@@ -25,6 +27,8 @@
     </v-btn>
     <v-btn @click="clear">clear</v-btn>
   </v-form>
+</div>
+</div>
 </template>
 
 <script>
